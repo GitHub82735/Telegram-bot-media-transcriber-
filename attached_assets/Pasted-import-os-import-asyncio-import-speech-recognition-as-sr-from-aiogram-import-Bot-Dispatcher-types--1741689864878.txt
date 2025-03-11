@@ -1,0 +1,133 @@
+import os
+import asyncio
+import speech_recognition as sr
+from aiogram import Bot, Dispatcher, types
+from aiogram.utils.executor import start_polling
+from pydub import AudioSegment
+from googletrans import Translator
+
+# Ku beddel TOKEN-kaaga bot-ka
+TOKEN = "YOUR_BOT_TOKEN"
+
+# Samee bot iyo dispatcher
+bot = Bot(token=TOKEN)
+dp = Dispatcher(bot)
+translator = Translator()
+
+# Faylasha la ogolyahay (MP4, MP3, MOV)
+ALLOWED_FORMATS = ["mp4", "mp3", "mov"]
+MAX_FILE_SIZE_MB = 624  # Xadka faylka
+
+# Liiska luqadaha la taageerayo
+LANGUAGES = {
+    "en": "English",
+    "so": "Soomaali",
+    "ar": "Carabi",
+    "fr": "Faransiis",
+    "es": "Isbaanish",
+    "de": "Jarmal",
+    "it": "Talyaani",
+    "tr": "Turki",
+    "ru": "Ruush",
+    "hi": "Hindi"
+}
+
+def convert_to_wav(file_path):
+    """U beddela MP4/MOV/MP3 ilaa WAV si loo sameeyo transcription."""
+    audio_path = file_path.rsplit(".", 1)[0] + ".wav"
+    audio = AudioSegment.from_file(file_path)
+    audio.export(audio_path, format="wav")
+    return audio_path
+
+async def transcribe_audio(file_path, language="en"):
+    """Waxay beddeshaa codka qoraal iyadoo isticmaaleysa algorithm 3v."""
+    recognizer = sr.Recognizer()
+
+    with sr.AudioFile(file_path) as source:
+        audio = recognizer.record(source)
+
+    try:
+        text = recognizer.recognize_google(audio, language=language)
+        return text
+    except sr.UnknownValueError:
+        return "Ma fahmin codka faylkan!"
+    except sr.RequestError:
+        return "Dhibaato ayaa jirta, isku day mar kale!"
+
+@dp.message_handler(commands=['start'])
+async def start_command(message: types.Message):
+    """Soo dhaweyn user-ka markii uu bilaabo bot-ka."""
+    await message.reply(f"Hello {message.from_user.first_name}, send me your audio or video files.\n"
+                        f"Si aad u doorato luqad, isticmaal amarka /language.")
+
+@dp.message_handler(commands=['language'])
+async def language_command(message: types.Message):
+    """Soo bandhigista luqadaha la heli karo."""
+    languages_list = "\n".join([f"- {code}: {name}" for code, name in LANGUAGES.items()])
+    await message.reply(f"**Luqadaha La Taageerayo:**\n{languages_list}\n\n"
+                        f"Si aad u isticmaasho luqad gaar ah, ku dar koodka luqadda markaad dirto faylka.\n"
+                        f"Tusaale: `/transcribe so` si loo isticmaalo Af-Soomaali.")
+
+async def process_file(message: types.Message, file_id: str, file_name: str, language="en"):
+    """Faylka ayuu soo degsanayaa, kadibna transcription ayuu sameynayaa."""
+    file_ext = file_name.split(".")[-1].lower()
+    if file_ext not in ALLOWED_FORMATS:
+        await message.reply("Faylka aad dirtay ma aha MP3, MP4, ama MOV. Fadlan isku day mar kale!")
+        return
+
+    file = await bot.get_file(file_id)
+    file_path = f"downloads/{file_name}"
+    await bot.download_file(file.file_path, destination=file_path)
+
+    # U beddel WAV haddii loo baahdo
+    if file_ext in ["mp4", "mov", "mp3"]:
+        audio_path = convert_to_wav(file_path)
+    else:
+        audio_path = file_path
+
+    # U beddel qoraal iyadoo la adeegsanayo algorithm 3v
+    transcription = await transcribe_audio(audio_path, language=language)
+
+    # Tarjumidda qoraalka haddii loo baahdo
+    try:
+        translated_text = translator.translate(transcription, dest=language).text
+        response = f"**Transcription (Luqadda {LANGUAGES.get(language, 'unknown')}):**\n\n{translated_text}"
+    except Exception:
+        response = f"**Transcription (Luqadda asalka ah):**\n\n{transcription}"
+
+    # Dir qoraalka transcription
+    await message.reply(response)
+
+    # Tirtir faylasha si aan server-ka u buuxin
+    os.remove(file_path)
+    if os.path.exists(audio_path):
+        os.remove(audio_path)
+
+@dp.message_handler(content_types=types.ContentType.DOCUMENT)
+async def handle_document(message: types.Message):
+    """Wuxuu maareeyaa faylasha la soo diro sida document."""
+    language = "en"
+    if len(message.text.split()) > 1:
+        language = message.text.split()[1]
+    await process_file(message, message.document.file_id, message.document.file_name, language)
+
+@dp.message_handler(content_types=types.ContentType.AUDIO)
+async def handle_audio(message: types.Message):
+    """Wuxuu maareeyaa faylasha audio ah."""
+    language = "en"
+    if len(message.text.split()) > 1:
+        language = message.text.split()[1]
+    await process_file(message, message.audio.file_id, message.audio.file_name, language)
+
+@dp.message_handler(content_types=types.ContentType.VIDEO)
+async def handle_video(message: types.Message):
+    """Wuxuu maareeyaa faylasha video ah."""
+    language = "en"
+    if len(message.text.split()) > 1:
+        language = message.text.split()[1]
+    await process_file(message, message.video.file_id, message.video.file_name, language)
+
+# Bilaabi bot-ka
+if __name__ == "__main__":
+    os.makedirs("downloads", exist_ok=True)
+    start_polling(dp, skip_updates=True)
