@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: telegram-media-transcriber
+    env: python
+    buildCommand: pip install poetry && poetry install
+    startCommand: python main.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.8
+    plan: free
