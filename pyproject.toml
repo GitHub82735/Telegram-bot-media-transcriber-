@@ -1,14 +1,21 @@
-[project]
-name = "repl-nix-workspace"
+[tool.poetry]
+name = "telegram-bot-media-transcriber"
 version = "0.1.0"
-description = "Add your description here"
-requires-python = ">=3.11"
-dependencies = [
-    "aiogram>=3.18.0",
-    "flask>=3.1.0",
-    "googletrans==4.0.0rc1",
-    "pydub>=0.25.1",
-    "python-dotenv>=1.0.1",
-    "requests>=2.32.3",
-    "speechrecognition>=3.14.1",
-]
+description = "Telegram bot that provides audio and video transcription services with multi-language support"
+authors = ["GitHub82735 <youremail@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+aiogram = "^3.18.0"
+flask = "^3.1.0"
+googletrans = "4.0.0rc1"
+pydub = "^0.25.1"
+python-dotenv = "^1.0.1"
+requests = "^2.32.3"
+speechrecognition = "^3.14.1"
+ffmpeg-python = "^0.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
