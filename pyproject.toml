@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Telegram bot that provides audio and video transcription services with multi-language support"
 authors = ["GitHub82735 <youremail@example.com>"]
 readme = "README.md"
+packages = [{include = "bot"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
@@ -19,3 +20,6 @@ ffmpeg-python = "^0.2.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+start = "main:main"

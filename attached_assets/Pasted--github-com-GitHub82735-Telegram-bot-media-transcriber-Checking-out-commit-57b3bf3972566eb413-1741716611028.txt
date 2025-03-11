@@ -1,0 +1,265 @@
+//github.com/GitHub82735/Telegram-bot-media-transcriber-
+
+==> Checking out commit 57b3bf3972566eb4135b7241e4609b18c76515e8 in branch main
+
+==> Using Python version 3.11.11 (default)
+
+==> Docs on specifying a Python version: https://render.com/docs/python-version
+
+==> Using Poetry version 1.7.1 (default)
+
+==> Docs on specifying a Poetry version: https://render.com/docs/poetry-version
+
+==> Running build command 'poetry install'...
+
+Updating dependencies
+
+Resolving dependencies...
+
+
+Package operations: 43 installs, 0 updates, 0 removals
+
+
+  • Installing hpack (3.0.0)
+
+  • Installing hyperframe (5.2.0)
+
+  • Installing frozenlist (1.5.0)
+
+  • Installing h11 (0.9.0)
+
+  • Installing h2 (3.2.0)
+
+  • Installing idna (2.10)
+
+  • Installing multidict (6.1.0)
+
+  • Installing propcache (0.3.0)
+
+  • Installing sniffio (1.3.1)
+
+  • Installing typing-extensions (4.12.2)
+
+  • Installing aiohappyeyeballs (2.5.0)
+
+  • Installing aiosignal (1.3.2)
+
+  • Installing annotated-types (0.7.0)
+
+  • Installing attrs (25.1.0)
+
+  • Installing chardet (3.0.4)
+
+  • Installing hstspreload (2025.1.1)
+
+  • Installing certifi (2025.1.31)
+
+  • Installing markupsafe (3.0.2)
+
+  • Installing httpcore (0.9.1)
+
+  • Installing pydantic-core (2.27.2)
+
+  • Installing rfc3986 (1.5.0)
+
+  • Installing yarl (1.18.3)
+
+  • Installing aiofiles (24.1.0)
+
+  • Installing aiohttp (3.11.13)
+
+  • Installing charset-normalizer (3.4.1)
+
+  • Installing blinker (1.9.0)
+
+  • Installing click (8.1.8)
+
+  • Installing httpx (0.13.3)
+
+  • Installing jinja2 (3.1.6)
+
+  • Installing magic-filter (1.0.12)
+
+  • Installing itsdangerous (2.2.0)
+
+  • Installing pydantic (2.10.6)
+
+  • Installing urllib3 (2.3.0)
+
+  • Installing werkzeug (3.1.3)
+
+  • Installing future (1.0.0)
+
+  • Installing aiogram (3.18.0)
+
+  • Installing ffmpeg-python (0.2.0)
+
+  • Installing flask (3.1.0)
+
+  • Installing googletrans (4.0.0rc1)
+
+  • Installing pydub (0.25.1)
+
+  • Installing python-dotenv (1.0.1)
+
+  • Installing requests (2.32.3)
+
+  • Installing speechrecognition (3.14.1)
+
+
+Writing lock file
+
+
+Installing the current project: telegram-bot-media-transcriber (0.1.0)
+
+The current project could not be installed: No file/folder found for package telegram-bot-media-transcriber
+
+
+If you do not want to install the current project use --no-root
+
+==> Uploading build...
+
+==> Uploaded in 3.8s. Compression took 1.1s
+
+==> Build successful 🎉
+
+==> Deploying...
+
+==> Cloning from https://github.com/GitHub82735/Telegram-bot-media-transcriber-
+
+==> Checking out commit 57b3bf3972566eb4135b7241e4609b18c76515e8 in branch main
+
+==> Using Python version 3.11.11 (default)
+
+==> Docs on specifying a Python version: https://render.com/docs/python-version
+
+==> Using Poetry version 1.7.1 (default)
+
+==> Docs on specifying a Poetry version: https://render.com/docs/poetry-version
+
+==> Running build command 'poetry install'...
+
+Updating dependencies
+
+Resolving dependencies...
+
+
+Package operations: 43 installs, 0 updates, 0 removals
+
+
+  • Installing hpack (3.0.0)
+
+  • Installing hyperframe (5.2.0)
+
+  • Installing frozenlist (1.5.0)
+
+  • Installing h11 (0.9.0)
+
+  • Installing h2 (3.2.0)
+
+  • Installing idna (2.10)
+
+  • Installing multidict (6.1.0)
+
+  • Installing propcache (0.3.0)
+
+  • Installing sniffio (1.3.1)
+
+  • Installing typing-extensions (4.12.2)
+
+  • Installing aiohappyeyeballs (2.5.0)
+
+  • Installing aiosignal (1.3.2)
+
+  • Installing annotated-types (0.7.0)
+
+  • Installing attrs (25.1.0)
+
+  • Installing chardet (3.0.4)
+
+  • Installing hstspreload (2025.1.1)
+
+  • Installing certifi (2025.1.31)
+
+  • Installing markupsafe (3.0.2)
+
+  • Installing httpcore (0.9.1)
+
+  • Installing pydantic-core (2.27.2)
+
+  • Installing rfc3986 (1.5.0)
+
+  • Installing yarl (1.18.3)
+
+  • Installing aiofiles (24.1.0)
+
+  • Installing aiohttp (3.11.13)
+
+  • Installing charset-normalizer (3.4.1)
+
+  • Installing blinker (1.9.0)
+
+  • Installing click (8.1.8)
+
+  • Installing httpx (0.13.3)
+
+  • Installing jinja2 (3.1.6)
+
+  • Installing magic-filter (1.0.12)
+
+  • Installing itsdangerous (2.2.0)
+
+  • Installing pydantic (2.10.6)
+
+  • Installing urllib3 (2.3.0)
+
+  • Installing werkzeug (3.1.3)
+
+  • Installing future (1.0.0)
+
+  • Installing aiogram (3.18.0)
+
+  • Installing ffmpeg-python (0.2.0)
+
+  • Installing flask (3.1.0)
+
+  • Installing googletrans (4.0.0rc1)
+
+  • Installing pydub (0.25.1)
+
+  • Installing python-dotenv (1.0.1)
+
+  • Installing requests (2.32.3)
+
+  • Installing speechrecognition (3.14.1)
+
+
+Writing lock file
+
+
+Installing the current project: telegram-bot-media-transcriber (0.1.0)
+
+The current project could not be installed: No file/folder found for package telegram-bot-media-transcriber
+
+
+If you do not want to install the current project use --no-root
+
+==> Uploading build...
+
+==> Uploaded in 3.8s. Compression took 1.1s
+
+==> Build successful 🎉
+
+==> Deploying...
+
+==> Running 'Telegram-bot-media-transcriber'
+
+bash: line 1: Telegram-bot-media-transcriber: command not found
+
+==> Exited with status 127
+
+==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+
+==> Running 'Telegram-bot-media-transcriber'
+
+bash: line 1: Telegram-bot-media-transcriber: command not found
